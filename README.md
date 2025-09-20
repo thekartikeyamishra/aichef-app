@@ -16,9 +16,6 @@ Stunning UI/UX: Enjoy a sleek, responsive, and animated interface with a modern 
 
 Light & Dark Mode: Seamlessly switch between beautiful light and dark themes.
 
-🚀 Live Demo
-(Optional: Add a link to your deployed application here once it's hosted)
-
 View Live Demo
 
 📦 Technologies Used
@@ -45,8 +42,8 @@ Gemini API Key: Obtain a free API key from Google AI Studio.
 Installation Steps
 Clone the repository (or download the ZIP):
 
-git clone https://github.com/YOUR_USERNAME/ai-nutrition-analyst.git
-cd ai-nutrition-analyst
+git clone https://github.com/thekartikeyamishra/aichef-app.git
+cd aichef-app
 
 (If downloading, replace YOUR_USERNAME with your GitHub username or just cd into the unzipped folder.)
 
@@ -81,29 +78,6 @@ View Results: The AI will generate a dish name, description, nutritional breakdo
 
 Toggle Theme: Use the sun/moon icon at the top-right to switch between light and dark modes.
 
-📁 Project Structure
-ai-chef-app/
-├── node_modules/         # Node.js dependencies
-├── public/               # Static assets (e.g., vite.svg)
-├── src/                  # Main application source code
-│   ├── assets/           # For static images, fonts etc. (currently empty)
-│   ├── components/       # Reusable React components
-│   │   ├── NutrientChart.jsx  # Displays analysis and recipe steps
-│   │   ├── Spinner.jsx        # Loading animation
-│   │   ├── ThemeToggle.jsx    # Light/Dark mode switch
-│   │   └── Typewriter.jsx     # Text typing animation
-│   ├── services/         # API interaction logic
-│   │   └── aiService.js     # Handles Gemini AI calls and prompt construction
-│   ├── App.jsx           # Main application logic and state management
-│   ├── index.css         # All global and component-specific styles
-│   └── main.jsx          # React app entry point
-├── .env                  # Environment variables (API Key)
-├── .gitignore            # Files/folders ignored by Git
-├── index.html            # Main HTML file
-├── package.json          # Project metadata and scripts
-├── package-lock.json     # Dependency tree lock file
-└── vite.config.js        # Vite build tool configuration
-
 🧠 Code Highlights
 src/services/aiService.js: Contains sophisticated prompt engineering to guide the Gemini AI to return structured JSON data, ensuring reliable parsing and robust application performance.
 
@@ -113,18 +87,10 @@ src/App.jsx: Manages the core application flow, state, and user interactions, sh
 
 src/index.css: Features a robust theming system using CSS variables, ensuring easy color customization and maintainability for both light and dark modes.
 
-🤝 Contributing
-This project is currently maintained by [Your Name/Team Name]. If you'd like to contribute, please fork the repository and submit a pull request with your suggested changes.
-
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 (Optional: You may need to create a LICENSE file in your root directory if you don't have one.)
 
-📞 Contact
-For questions, suggestions, or collaboration opportunities, feel free to reach out:
+GitHub: @thekartikeyamishra
 
-Email: your.email@example.com
-
-GitHub: @yourusername
-
-Made with 🍎 and ❤️ by [Your Name/Team Name]
+Made with 🍎 and ❤️ by thekartikeyamishra
