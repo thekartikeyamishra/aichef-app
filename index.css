@@ -1,0 +1,342 @@
+/* --- 🎨 THEME & FONT DEFINITIONS --- */
+:root {
+  /* Import a modern, friendly font */
+  font-family: 'Poppins', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  
+  /* Browser rendering hints for better text quality */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ☀️ Light Mode Colors */
+  --bg-color-light: #FFF8F0; /* Creamy White */
+  --card-bg-light: #FFFFFF;
+  --text-color-light: #3D352E; /* Dark Brown */
+  --header-color-light: #2E2520;
+  --accent-color-light: #FF6B6B; /* Vibrant Coral */
+  --accent-hover-light: #FF8787;
+  --subtle-text-light: #7E746A;
+  --border-color-light: #EAE0D6;
+
+  /* 🌙 Dark Mode Colors */
+  --bg-color-dark: #1A1D24;
+  --card-bg-dark: #242831;
+  --text-color-dark: #E0E0E0;
+  --header-color-dark: #FFFFFF;
+  --accent-color-dark: #FCAA5C; /* Sunny Orange */
+  --accent-hover-dark: #FFC085;
+  --subtle-text-dark: #8892A7;
+  --border-color-dark: #3A4150;
+}
+
+/* --- 🌐 GLOBAL & BASE STYLES --- */
+
+/* Import the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Apply a more predictable box model to all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- 🖌️ THEME APPLIER --- */
+/* These classes are toggled on the body to switch the entire app's theme */
+body.light {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
+body.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* --- ✨ ANIMATIONS & LAYOUT --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.app-container {
+  position: relative;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* --- 🎨 HEADER --- */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: slideUp 0.6s ease-out;
+}
+.header h1 {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+.header p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin: 0;
+}
+body.light .header h1 { color: var(--header-color-light); }
+body.dark .header h1 { color: var(--header-color-dark); }
+body.light .header p { color: var(--subtle-text-light); }
+body.dark .header p { color: var(--subtle-text-dark); }
+
+/* --- 📝 INPUT CARD --- */
+.input-card {
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: slideUp 0.7s ease-out;
+}
+body.light .input-card { background-color: var(--card-bg-light); border: 1px solid var(--border-color-light); }
+body.dark .input-card { background-color: var(--card-bg-dark); border: 1px solid var(--border-color-dark); }
+
+textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.light textarea { background-color: var(--bg-color-light); border-color: var(--border-color-light); color: var(--text-color-light); }
+body.dark textarea { background-color: #2D323C; border-color: var(--border-color-dark); color: var(--text-color-dark); }
+textarea:focus { outline: none; }
+body.light textarea:focus { border-color: var(--accent-color-light); box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2); }
+body.dark textarea:focus { border-color: var(--accent-color-dark); box-shadow: 0 0 0 3px rgba(252, 170, 92, 0.2); }
+
+.generate-button {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body.light .generate-button { background-color: var(--accent-color-light); color: white; }
+body.dark .generate-button { background-color: var(--accent-color-dark); color: #1A1D24; }
+.generate-button:hover:not(:disabled) { transform: translateY(-3px); }
+body.light .generate-button:hover:not(:disabled) { box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4); }
+body.dark .generate-button:hover:not(:disabled) { box-shadow: 0 5px 15px rgba(252, 170, 92, 0.3); }
+.generate-button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* --- 🔄 CUSTOM TOGGLE SWITCHES --- */
+.toggles-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.75rem;
+}
+.toggle-switch input { display: none; }
+.toggle-switch .slider {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+.toggle-switch .slider::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+.toggle-switch input:checked + .slider::before { transform: translateX(20px); }
+.toggle-switch input:disabled ~ .slider,
+.toggle-switch input:disabled ~ .label-text {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.toggle-switch .label-text { font-weight: 600; transition: color 0.3s ease; }
+/* Light mode toggles */
+body.light .toggle-switch .slider { background-color: #D6CFC7; }
+body.light .toggle-switch input:checked + .slider { background-color: var(--accent-color-light); }
+body.light .toggle-switch .label-text { color: var(--subtle-text-light); }
+body.light .toggle-switch input:checked ~ .label-text { color: var(--text-color-light); }
+/* Dark mode toggles */
+body.dark .toggle-switch .slider { background-color: #4A5263; }
+body.dark .toggle-switch input:checked + .slider { background-color: var(--accent-color-dark); }
+body.dark .toggle-switch .label-text { color: var(--subtle-text-dark); }
+body.dark .toggle-switch input:checked ~ .label-text { color: var(--text-color-dark); }
+
+/* --- 💡 THEME TOGGLE BUTTON --- */
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover { 
+  background-color: rgba(128, 128, 128, 0.1);
+  transform: scale(1.1);
+}
+body.light .theme-toggle { color: var(--text-color-light); }
+body.dark .theme-toggle { color: var(--text-color-dark); }
+
+/* --- 📊 NUTRIENT CHART & RECIPE STEPS --- */
+.nutrient-card {
+  padding: 2rem;
+  border-radius: 20px;
+  animation: slideUp 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* Add space between sections */
+}
+body.light .nutrient-card { background-color: var(--card-bg-light); border: 1px solid var(--border-color-light); box-shadow: 0 10px 30px rgba(0,0,0,0.07); }
+body.dark .nutrient-card { background-color: var(--card-bg-dark); border: 1px solid var(--border-color-dark); }
+
+.dish-name {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  min-height: 1.2em; /* Prevents layout shift during typewriter effect */
+}
+.dish-name::after { /* Blinking cursor for typewriter */
+    content: '|';
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { from, to { color: transparent } 50% { color: inherit; } }
+
+.dish-description { margin: 0; font-size: 1.1rem; }
+body.light .dish-description { color: var(--subtle-text-light); }
+body.dark .dish-description { color: var(--subtle-text-dark); }
+
+.nutrient-breakdown h3, .recipe-steps h3 {
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+  border-bottom: 1px solid;
+  padding-bottom: 0.75rem;
+}
+body.light .nutrient-breakdown h3, body.light .recipe-steps h3 { border-color: var(--border-color-light); }
+body.dark .nutrient-breakdown h3, body.dark .recipe-steps h3 { border-color: var(--border-color-dark); }
+
+.nutrient-breakdown ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.25rem; }
+.nutrient-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+.nutrient-name { font-weight: 600; }
+.nutrient-bar-background { height: 10px; width: 100%; border-radius: 5px; overflow: hidden; }
+body.light .nutrient-bar-background { background-color: #EAE0D6; }
+body.dark .nutrient-bar-background { background-color: #3A4150; }
+
+.nutrient-bar-foreground {
+  height: 100%;
+  border-radius: 5px;
+  animation: growBar 0.8s ease-out forwards;
+}
+@keyframes growBar { from { width: 0%; } to { width: var(--bar-width, 0%); } }
+body.light .nutrient-bar-foreground { background: linear-gradient(90deg, #FF8787, #FF6B6B); }
+body.dark .nutrient-bar-foreground { background: linear-gradient(90deg, #FFC085, #FCAA5C); }
+
+/* --- NEW RECIPE STEPS STYLES --- */
+.recipe-steps ol {
+  list-style: none;
+  counter-reset: steps-counter;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.recipe-steps li {
+  counter-increment: steps-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  line-height: 1.5;
+}
+.recipe-steps li::before {
+  content: counter(steps-counter);
+  font-weight: 700;
+  font-size: 1.2rem;
+  min-width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+.recipe-steps li:hover::before {
+  transform: scale(1.1);
+}
+body.light .recipe-steps li::before { background-color: var(--bg-color-light); border: 2px solid var(--accent-color-light); color: var(--accent-color-light); }
+body.dark .recipe-steps li::before { background-color: var(--card-bg-dark); border: 2px solid var(--accent-color-dark); color: var(--accent-color-dark); }
+
+/* --- 🌀 SPINNER & ERRORS --- */
+.spinner-container, .error-message {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+    animation: fadeIn 0.3s;
+}
+.error-message { color: #FF6B6B; font-weight: 600; }
+.spinner {
+    margin: 0 auto 1rem auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid;
+    border-top-color: transparent !important; /* Important to override theme colors */
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+body.light .spinner { border-color: #EAE0D6; }
+body.dark .spinner { border-color: #3A4150; }
+
+/* --- ♿ ACCESSIBILITY --- */
+/* Respects user preference to reduce motion and disables animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
